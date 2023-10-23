@@ -13,10 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/origin', function () {
-    return view('welcome');
+
+
+Route::get('/post', function () {
+    return view('post');
+});
+
+Route::get('/subpost', function () {
+    return view('subpost');
 });
 
 Route::get('/', function () {
-    return view('post');
+    return view('welcome');
 });
