@@ -6,7 +6,7 @@
 <h1>Hello world</h1>
 
 <article>
-<h1><a href="/subpost">first post</a></h1>
+<h1><a href="/post/post1">first post</a></h1>
 <p>
   It was then that the fox appeared. 
   “Good morning,” said the fox.
@@ -14,7 +14,7 @@
 </p>
 </article>
 <article>
-<h1><a href="/subpost">second post</a></h1>
+<h1><a href="/post/post2">second post</a></h1>
 <p>
   “I am right here,” the voice said, “under the apple tree.”
   “Who are you?” asked the little prince, and added, “You are very pretty to look at.”
@@ -23,7 +23,7 @@
 </p>
 </article>
 <article>
-<h1><a href="/subpost">third post</a></h1>
+<h1><a href="/post/post3">third post</a></h1>
 <p>
 “I cannot play with you,” the fox said. “I am not tamed.”
 “Ah! Please excuse me,” said the little prince.

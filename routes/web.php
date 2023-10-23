@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +20,27 @@ Route::get('/post', function () {
     return view('post');
 });
 
-Route::get('/subpost', function () {
-    return view('subpost');
-});
+Route::get('/post/{post}', function ($post_input) {
+    $path = __DIR__ . "/../resources/posts/{$post_input}.html";
+    //$post = file_get_contents(__DIR__ . "/../resources/posts/{$post_input}.html");
+
+     if (! file_exists($path)){
+          dd("file does not exit");
+        //   abort(404);
+        //   return redirect('/');
+
+
+     }
+    $post =  cache()->remember("post.{$post_input}",now()->addMinutes(5), function() use($path){
+        var_dump("It's file in the cache");
+        return file_get_contents($path);
+
+     });
+
+    return view('subpost', [
+        'post_in_html'=> $post
+    ]);
+})->whereAlphaNumeric('post');
 
 Route::get('/', function () {
     return view('welcome');
