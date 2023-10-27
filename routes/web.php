@@ -2,7 +2,7 @@
 use App\Models\Post;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
-use Symfony\Component\Yaml\Yaml;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +20,12 @@ use Symfony\Component\Yaml\Yaml;
 Route::get('/post', function () {
     // $posts = Post::all();
     
-    $document = (
+    $document = YamlFrontMatter::parseFile(
         resource_path('posts/post1.html')
     );
+    // $document = YamlFrontMatter::parseFile(
+    //     resource_path('posts/post1.html')
+    // );
     ddd($document);
     // return view('post', [
     //     // 'posts' => $posts
