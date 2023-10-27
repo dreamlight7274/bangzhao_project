@@ -3,8 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\File;
 
 class Post{
+    public static function all()
+    {
+        return File::files(resource_path("posts/"));
+
+    }
     public static function find($post_input){
         //if (! file_exists($path=  __DIR__ . "/../resources/posts/{$post_input}.html")){
         if(! file_exists($path = resource_path("posts/{$post_input}.html"))) {   

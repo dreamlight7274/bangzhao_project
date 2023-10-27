@@ -17,7 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/post', function () {
-    return view('post');
+    // $posts = Post::all();
+    return view('post', [
+        // 'posts' => $posts
+        'posts' => Post::all()
+    ]);
 });
 
 Route::get('/post/{post}', function ($post_input) {
