@@ -6,7 +6,12 @@
 <h1>Hello world</h1>
 
 <article>
-<?= $post_in_html; ?>
+<h1>
+    <?= $post_in_html->title; ?>
+</h1>
+<div>
+    <?= $post_in_html->body; ?>
+</div>
 </article>
 <a href="/post">Go Back</a>
 </body>

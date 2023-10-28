@@ -7,9 +7,17 @@
 
 
 
- <?php foreach ($posts as $subpost): ?>
+ <?php foreach ($posts_in_html as $subpost): ?>
 <article>
-<?= $subpost; ?>
+  
+   <h1>
+    
+    <a href="/post/<?= $subpost->link; ?>"> 
+    <?= $subpost->title; ?>
+  </a> 
+  </h1>
+{{-- <?= $subpost; ?> --}}
+<?= $subpost->excerpt; ?>
 </article>
 <?php endforeach;  ?> 
 

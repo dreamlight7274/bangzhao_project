@@ -1,6 +1,7 @@
 <?php
 use App\Models\Post;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
@@ -20,17 +21,68 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 Route::get('/post', function () {
     // $posts = Post::all();
     
-    $document = YamlFrontMatter::parseFile(
-        resource_path('posts/post1.html')
-    );
     // $document = YamlFrontMatter::parseFile(
     //     resource_path('posts/post1.html')
     // );
-    ddd($document);
+    // $document = YamlFrontMatter::parseFile(
+    //     resource_path('posts/post1.html')
+    // );
+    // ddd($document);
     // return view('post', [
     //     // 'posts' => $posts
     //     'posts' => Post::all()
     // ]);
+
+
+          // collection approach
+    // $files = File::files(resource_path("posts"));
+    // $posts = [];
+    // $posts = collect($files)
+    //     ->map(function ($file){
+    //         $document = YamlFrontMatter::parseFile($file);
+    //     return new Post(
+    //         $document->title,
+    //         $document->link,
+    //         $document->excerpt,
+    //         $document->date,
+    //         $document->body()
+    //     );
+
+    //     });
+
+    
+        //array approach
+    // $posts = array_map(function ($file){
+    //     $document = YamlFrontMatter::parseFile($file);
+    //     return new Post(
+    //         $document->title,
+    //         $document->link,
+    //         $document->excerpt,
+    //         $document->date,
+    //         $document->body()
+    //     );
+
+    // }, $files);
+
+    // another way to get all the contents
+
+    // foreach ($files as $file) {
+    //     $document = YamlFrontMatter::parseFile($file);
+
+        // $posts[] = new Post(
+        //     $document->title,
+        //     $document->link,
+        //     $document->excerpt,
+        //     $document->date,
+        //     $document->body()
+
+    //     );
+    // }
+    // ddd($posts[0]->excerpt);
+        return view('post', [
+        'posts_in_html'=> Post::all()
+    ]);
+
 });
 
 Route::get('/post/{post}', function ($post_input) {
