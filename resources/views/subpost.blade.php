@@ -7,10 +7,13 @@
 
 <article>
 <h1>
-    <?= $post_in_html->title; ?>
+    {{-- <?= $post_in_html->title; ?> --}}
+    {{ $post_in_html->title }}
 </h1>
 <div>
-    <?= $post_in_html->body; ?>
+    {{-- <?= $post_in_html->body; ?> --}}
+     {{-- {{ $post_in_html->body }}  --}}
+     {!! $post_in_html->body !!}
 </div>
 </article>
 <a href="/post">Go Back</a>

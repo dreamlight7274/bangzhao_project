@@ -33,21 +33,25 @@ class Post{
         // return array_map(function ($file) {
         //     return $file->getContents();
         // }, $files);
-        $files = File::files(resource_path("posts"));
-        $posts = [];
-        $posts = collect($files)
-            ->map(function ($file){
-                $document = YamlFrontMatter::parseFile($file);
-            return new Post(
-                $document->title,
-                $document->link,
-                $document->excerpt,
-                $document->date,
-                $document->body()
-            );
-    
-            });
-        return $posts;
+        return cache()->remember('post.all',now()->addSeconds(5), function(){
+            //var_dump("It's file in the cache");
+            $files = File::files(resource_path("posts"));
+            $posts = [];
+            $posts = collect($files)
+                ->map(function ($file){
+                    $document = YamlFrontMatter::parseFile($file);
+                return new Post(
+                    $document->title,
+                    $document->link,
+                    $document->excerpt,
+                    $document->date,
+                    $document->body()
+                );
+        
+                })->sortBy('date');
+            return $posts;
+        });
+
 
 
     }

@@ -7,20 +7,27 @@
 
 
 
- <?php foreach ($posts_in_html as $subpost): ?>
+ {{-- <?php foreach ($posts_in_html as $subpost): ?> --}}
+ @foreach ($posts_in_html as $subpost)
+     
+ 
 <article>
   
    <h1>
     
-    <a href="/post/<?= $subpost->link; ?>"> 
-    <?= $subpost->title; ?>
+    {{-- <a href="/post/<?= $subpost->link; ?>">  --}}
+      <a href="/post/{{ $subpost->link }}">
+    {{-- <?= $subpost->title; ?> --}}
+    {{-- or use the approach of template --}}
+    {{ $subpost->title }}
   </a> 
   </h1>
 {{-- <?= $subpost; ?> --}}
-<?= $subpost->excerpt; ?>
+{{-- <?= $subpost->excerpt; ?> --}}
+{{ $subpost->excerpt }}
 </article>
-<?php endforeach;  ?> 
-
+{{-- <?php endforeach;  ?>  --}}
+@endforeach
 {{-- <article>
 <h1><a href="/post/post1">first post</a></h1>
 <p>
