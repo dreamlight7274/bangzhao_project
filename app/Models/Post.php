@@ -71,8 +71,14 @@ class Post{
     //     return file_get_contents($path);
 
     //  });
-    $posts = static::all();
-    return $posts->firstWhere('link', $post_input);
+    // $posts = static::all();
+    // return $posts->firstWhere('link', $post_input);
+    $subpost = static::all()->firstWhere('link', $post_input);
+
+    if (! $subpost) {
+        throw new ModelNotFoundException();
+    }
+    return $subpost;
         
 
     }

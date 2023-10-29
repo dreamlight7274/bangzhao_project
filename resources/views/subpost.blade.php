@@ -1,8 +1,13 @@
-<!doctype html>
+{{-- <!doctype html>
 <title>My Blog</title>
-<link rel="stylesheet" href="/app.css">
+<link rel="stylesheet" href="/app.css"> --}}
 {{-- <script src="test.js"></script> --}}
-<body>
+@extends('layout')
+
+    
+
+{{-- <body> --}}
+@section('main_content')    
 <h1>Hello world</h1>
 
 <article>
@@ -17,4 +22,5 @@
 </div>
 </article>
 <a href="/post">Go Back</a>
-</body>
+@endsection
+{{-- </body> --}}
