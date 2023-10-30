@@ -16,7 +16,8 @@
    <h1>
     
     {{-- <a href="/post/<?= $subpost->link; ?>">  --}}
-      <a href="/post/{{ $subpost->link }}">
+      {{-- <a href="/post/{{ $subpost->link }}"> --}}
+        <a href="/post/{{ $subpost->id }}">
     {{-- <?= $subpost->title; ?> --}}
     {{-- or use the approach of template --}}
     {{ $subpost->title }}

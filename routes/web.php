@@ -84,14 +84,17 @@ Route::get('/post', function () {
     ]);
 
 });
-
-Route::get('/post/{post}', function ($post_input) {
+// if you want to use "Post $post" in function, the name in {} should be the same one."
+// Route::get('/post/{post}', function ($post_input) {
+    Route::get('/post/{post}', function (Post $post) {
     //$post = Post::find($post_input);
     // dd($post_input);
 
 
     return view('subpost',[
-        'post_in_html' => Post::find($post_input)
+        // 'post_in_html' => Post::find($post_input)
+        //'post_in_html' => Post::find($post)
+        'post_in_html' => $post
     ]);
     // $path = __DIR__ . "/../resources/posts/{$post_input}.html";
     // //$post = file_get_contents(__DIR__ . "/../resources/posts/{$post_input}.html");
