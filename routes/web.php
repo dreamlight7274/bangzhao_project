@@ -86,7 +86,9 @@ Route::get('/post', function () {
     // }
     // ddd($posts[0]->excerpt);
         return view('post', [
-        'posts_in_html'=> Post::all()
+        // 'posts_in_html'=> Post::all()
+        // how many posts you have, how many sqls you will 
+        'posts_in_html'=> Post::with('category')->get()
     ]);
 
 });
