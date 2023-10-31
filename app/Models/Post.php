@@ -13,4 +13,15 @@ class Post extends Model
     // in this part, add something you don't want to use mass assignment.
 
     protected $fillable = ['title','excerpt','body'];
+
+    public function getRouteKeyName()
+    {
+        return 'id';
+    }
+    // this is another way to design the key for route to find the data
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

@@ -1,4 +1,6 @@
 <?php
+
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
@@ -19,6 +21,10 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 
 Route::get('/post', function () {
+    // \Illuminate\Support\Facades\DB::listen(function ($query){
+    //     logger($query->sql, $query->bindings);
+
+    // });
     // $posts = Post::all();
     
     // $document = YamlFrontMatter::parseFile(
@@ -86,6 +92,9 @@ Route::get('/post', function () {
 });
 // if you want to use "Post $post" in function, the name in {} should be the same one."
 // Route::get('/post/{post}', function ($post_input) {
+
+    // if you don't wan to use default key: ID to find the post: write as below:
+        // Route::get('/post/{post:slug(key you want to use to identity)}', function (Post $post) { equal to:  Post::where('slug', $post)->firstOrFall()
     Route::get('/post/{post}', function (Post $post) {
     //$post = Post::find($post_input);
     // dd($post_input);
@@ -120,3 +129,10 @@ Route::get('/post', function () {
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('categories/{category}', function (Category $category) {
+    return view('post', [
+        'posts_in_html'=> $category->posts
+    ]);
+});
+

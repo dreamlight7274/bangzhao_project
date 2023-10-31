@@ -1,6 +1,6 @@
 <!doctype html>
 <title>My Blog</title>
-<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="/app.css">
 {{-- <script src="test.js"></script> --}}
 <body>
 <h1>Hello world</h1>
@@ -22,6 +22,9 @@
     {{-- or use the approach of template --}}
     {{ $subpost->title }}
   </a> 
+  <p>
+    <a href="/categories/{{ $subpost->category->id }}">{{ $subpost->category->name }}</a>
+</p>
   </h1>
 {{-- <?= $subpost; ?> --}}
 {{-- <?= $subpost->excerpt; ?> --}}

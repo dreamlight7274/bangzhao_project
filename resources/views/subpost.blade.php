@@ -15,6 +15,9 @@
     {{-- <?= $post_in_html->title; ?> --}}
     {{ $post_in_html->title }}
 </h1>
+<p>
+    <a href="/categories/{{ $post_in_html->category->id }}">{{ $post_in_html->category->name }}</a>
+</p>
 <div>
     {{-- <?= $post_in_html->body; ?> --}}
      {{-- {{ $post_in_html->body }}  --}}
