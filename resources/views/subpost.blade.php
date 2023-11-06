@@ -15,9 +15,12 @@
     {{-- <?= $post_in_html->title; ?> --}}
     {{ $post_in_html->title }}
 </h1>
+{{-- <p>
+    By <a href="#">{{ $post_in_html->user->name }}</a>with the category of <a href="/categories/{{ $post_in_html->category->id }}">{{ $post_in_html->category->name }}</a>
+</p> --}}
 <p>
-    <a href="/categories/{{ $post_in_html->category->id }}">{{ $post_in_html->category->name }}</a>
-</p>
+    By <a href="/authors/{{ $post_in_html->user->username }}">{{ $post_in_html->user->name }}</a>with the category of <a href="/categories/{{ $post_in_html->category->id }}">{{ $post_in_html->category->name }}</a>
+  </p>
 <div>
     {{-- <?= $post_in_html->body; ?> --}}
      {{-- {{ $post_in_html->body }}  --}}

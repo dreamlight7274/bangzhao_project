@@ -22,8 +22,11 @@
     {{-- or use the approach of template --}}
     {{ $subpost->title }}
   </a> 
-  <p>
+  {{-- <p>
     <a href="/categories/{{ $subpost->category->id }}">{{ $subpost->category->name }}</a>
+</p> --}}
+<p>
+  By <a href="/authors/{{ $subpost->user->username }}">{{ $subpost->user->name }}</a>with the category of <a href="/categories/{{ $subpost->category->id }}">{{ $subpost->category->name }}</a>
 </p>
   </h1>
 {{-- <?= $subpost; ?> --}}

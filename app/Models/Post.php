@@ -14,6 +14,8 @@ class Post extends Model
 
     protected $fillable = ['title','excerpt','body'];
 
+    protected $with = ['category','user'];
+
     public function getRouteKeyName()
     {
         return 'id';
@@ -24,4 +26,12 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function user() 
+    {
+        return $this->belongsTo(User::class);
+    }
+    // public function author() // if you want to give another name of this method. use add the foreign key
+    // {
+    //     return $this->belongsTo(User::class, 'user_id');
+    // }
 }

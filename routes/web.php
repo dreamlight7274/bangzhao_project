@@ -2,6 +2,7 @@
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
@@ -88,7 +89,8 @@ Route::get('/post', function () {
         return view('post', [
         // 'posts_in_html'=> Post::all()
         // how many posts you have, how many sqls you will 
-        'posts_in_html'=> Post::with('category')->get()
+        // 'posts_in_html'=> Post::with('category')->get()
+        'posts_in_html'=> Post::latest()->get()  //->with('category','user'), we add it in model
     ]);
 
 });
@@ -134,7 +136,13 @@ Route::get('/', function () {
 
 Route::get('categories/{category}', function (Category $category) {
     return view('post', [
-        'posts_in_html'=> $category->posts
+        'posts_in_html'=> $category->posts //->load(['category','user']) we add with in model
+    ]); // make the select more efficient
+});
+
+Route::get('authors/{user:username}', function (User $user) {
+    return view('post', [
+        'posts_in_html'=> $user->posts //->load(['category','user'])
     ]);
 });
 

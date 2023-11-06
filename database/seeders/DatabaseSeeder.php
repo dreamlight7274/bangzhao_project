@@ -5,7 +5,9 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use Illuminate\Database\Seeder;
-
+use App\Models\Post;
+use App\Models\Category;
+use App\Models\User;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,8 +15,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::truncate();
-        \App\Models\Category::truncate();
+        // User::truncate();
+        // Category::truncate();
+        // Post::truncate();
+        // if you use php atisan db:seed, it will clean the db firstly. 
+
         // \App\Models\User::factory(10)->create();
         // it's a convenient approach to create some data automatically.
 
@@ -23,21 +28,67 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        \App\Models\User::factory(10)->create();
+        // $user = User::factory()->create();
 
-        \App\Models\Category::create([
-            'name' => 'family',
-            'slug' => 'family'
+        $user = User::factory()->create([
+            'name' => 'Faker'
         ]);
-        \App\Models\Category::create([
-            'name' => 'personal',
-            'slug' => 'personal'
-        ]);
-        \App\Models\Category::create([
-            'name' => 'work',
-            'slug' => 'work'
 
+
+        Post::factory(5)->create([
+            'user_id'=> $user->id
         ]);
+
+        // $family = Category::create([
+        //     'name' => 'family',
+        //     'slug' => 'family'
+        // ]);
+        // $personal = Category::create([
+        //     'name' => 'personal',
+        //     'slug' => 'personal'
+        // ]);
+        // $work = Category::create([
+        //     'name' => 'work',
+        //     'slug' => 'work'
+
+        // ]);
+
+        // Post::create([
+        //     'user_id' => $user->id,
+        //     'category_id'=> $family->id,
+        //     'title' => 'my first post',
+        //     'excerpt' => 'It was then that the fox appeared.',
+        //     'body' => '<p>It was then that the fox appeared. It was then that the fox appeared. It was then that the fox appeared.</p>'
+
+
+        // ]);
+        // Post::create([
+        //     'user_id' => $user->id,
+        //     'category_id'=> $personal->id,
+        //     'title' => 'my second post',
+        //     'excerpt' => '“I am right here,” the voice said, “under the apple tree.”',
+        //     'body' => '<p>“I am right here,” the voice said, “under the apple tree.” “I am right here,” the voice said, “under the apple tree.” “I am right here,” the voice said, “under the apple tree.” </p>'
+
+
+        // ]);
+        // Post::create([
+        //     'user_id' => $user->id,
+        //     'category_id'=> $work->id,
+        //     'title' => 'my third post',
+        //     'excerpt' => '“I cannot play with you,” the fox said. “I am not tamed.”',
+        //     'body' => '<p>“I cannot play with you,” the fox said. “I am not tamed.” “I cannot play with you,” the fox said. “I am not tamed.” “I cannot play with you,” the fox said. “I am not tamed.”</p>'
+
+
+        // ]);
+        // Post::create([
+        //     'user_id' => $user->id,
+        //     'category_id'=> $family->id,
+        //     'title' => 'my forth post',
+        //     'excerpt' => 'Travel to be happy, must be traveling light',
+        //     'body' => '<p>Travel to be happy, must be traveling light. Travel to be happy, must be traveling light</p>'
+
+
+        // ]);
 
 
     }
