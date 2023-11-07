@@ -2,12 +2,14 @@
 <title>My Blog</title>
 <link rel="stylesheet" href="/app.css"> --}}
 {{-- <script src="test.js"></script> --}}
-@extends('layout')
+{{-- @extends('layout') --}}
 
     
 
 {{-- <body> --}}
-@section('main_content')    
+{{-- @section('main_content')     --}}
+
+<x-layoutc>
 <h1>Hello world</h1>
 
 <article>
@@ -28,5 +30,7 @@
 </div>
 </article>
 <a href="/post">Go Back</a>
-@endsection
+</x-layoutc>
+
+{{-- @endsection --}}
 {{-- </body> --}}

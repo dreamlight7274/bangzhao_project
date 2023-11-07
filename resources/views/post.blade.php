@@ -1,8 +1,11 @@
-<!doctype html>
+{{-- <!doctype html>
 <title>My Blog</title>
-<link rel="stylesheet" href="/app.css">
+<link rel="stylesheet" href="/app.css"> --}}
 {{-- <script src="test.js"></script> --}}
-<body>
+{{-- <body> --}}
+{{-- @extends('layout')  
+@section('main_content')   --}}
+<x-layoutc>
 <h1>Hello world</h1>
 
 
@@ -63,4 +66,6 @@ But, after some thought, he added:
 “I am looking for men,” said the little prince. “What does that mean - ‘tame’?”
 </p>
 </article> --}}
-</body>
+</x-layoutc>
+{{-- @endsection --}}
+{{-- </body> --}}
