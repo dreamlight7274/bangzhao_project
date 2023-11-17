@@ -90,7 +90,9 @@ Route::get('/post', function () {
         // 'posts_in_html'=> Post::all()
         // how many posts you have, how many sqls you will 
         // 'posts_in_html'=> Post::with('category')->get()
-        'posts_in_html'=> Post::latest()->get()  //->with('category','user'), we add it in model
+        'posts_in_html'=> Post::latest()->get(),  //->with('category','user'), we add it in model
+        'categories_in_html' => Category::all()
+
     ]);
 
 });
