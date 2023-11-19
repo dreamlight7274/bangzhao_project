@@ -18,7 +18,7 @@
 
     </div>
 
-    <div x-show="show" class="absolute bg-gray-100 w-full rounded-xl text-left z-50" style="display: none"> {{-- w-number width of the element --}}
+    <div x-show="show" class="absolute bg-gray-100 w-full rounded-xl text-left z-50 overflow-auto max-h-52" style="display: none"> {{-- w-number width of the element --}}
         
         {{ $slot }}
 
