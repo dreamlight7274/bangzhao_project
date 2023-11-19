@@ -95,7 +95,7 @@ Route::get('/post', function () {
 
     ]);
 
-});
+})->name('home');
 // if you want to use "Post $post" in function, the name in {} should be the same one."
 // Route::get('/post/{post}', function ($post_input) {
 
@@ -138,13 +138,17 @@ Route::get('/', function () {
 
 Route::get('categories/{category}', function (Category $category) {
     return view('post', [
-        'posts_in_html'=> $category->posts //->load(['category','user']) we add with in model
+        'posts_in_html'=> $category->posts, //->load(['category','user']) we add with in model
+        'currentCategory' => $category,
+        'categories_in_html' => Category::all()
+
     ]); // make the select more efficient
-});
+})->name('category');
 
 Route::get('authors/{user:username}', function (User $user) {
     return view('post', [
-        'posts_in_html'=> $user->posts //->load(['category','user'])
+        'posts_in_html'=> $user->posts, //->load(['category','user'])
+        'categories' => Category::all()
     ]);
 });
 
