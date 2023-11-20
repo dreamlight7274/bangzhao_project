@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostsController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -21,7 +22,7 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 
 
-Route::get('/post', function () {
+// Route::get('/post', function () {
     // \Illuminate\Support\Facades\DB::listen(function ($query){
     //     logger($query->sql, $query->bindings);
 
@@ -86,38 +87,49 @@ Route::get('/post', function () {
     //     );
     // }
     // ddd($posts[0]->excerpt);
-        $posts = Post::latest();
-    if (request('search')){
-            $posts->where('title','like','%'. request('search'). '%')
-            ->orWhere('body', 'like', '%'.request('search').'%');
-        }
-        return view('post', [
+
+
+    // all of them as been removed to controller
+    //     $posts = Post::latest();
+    // if (request('search')){
+    //         $posts->where('title','like','%'. request('search'). '%')
+    //         ->orWhere('body', 'like', '%'.request('search').'%');
+    //     }
+    //     return view('post', [
         // 'posts_in_html'=> Post::all()
         // how many posts you have, how many sqls you will 
         // 'posts_in_html'=> Post::with('category')->get()
-        'posts_in_html' => $posts->get(),
+        // 'posts_in_html' => $posts->get(),
         // 'posts_in_html'=> Post::latest()->get(),  
         //->with('category','user'), we add it in model
-        'categories_in_html' => Category::all()
+        // 'categories_in_html' => Category::all()
 
-    ]);
+    // ]);
 
-})->name('home');
+// })->name('home');
+
+Route::get('/post', [PostsController::class, 'index'])->name('home');
+Route::get('/post/{post}', [PostsController::class, 'show'])->whereAlphaNumeric('post');
+
 // if you want to use "Post $post" in function, the name in {} should be the same one."
 // Route::get('/post/{post}', function ($post_input) {
 
     // if you don't wan to use default key: ID to find the post: write as below:
         // Route::get('/post/{post:slug(key you want to use to identity)}', function (Post $post) { equal to:  Post::where('slug', $post)->firstOrFall()
-    Route::get('/post/{post}', function (Post $post) {
+    
+    
+    // Route::get('/post/{post}', function (Post $post) {
     //$post = Post::find($post_input);
     // dd($post_input);
 
 
-    return view('subpost',[
+    // return view('subpost',[
         // 'post_in_html' => Post::find($post_input)
         //'post_in_html' => Post::find($post)
-        'post_in_html' => $post
-    ]);
+        
+        
+    //     'post_in_html' => $post
+    // ]);
     // $path = __DIR__ . "/../resources/posts/{$post_input}.html";
     // //$post = file_get_contents(__DIR__ . "/../resources/posts/{$post_input}.html");
 
@@ -137,7 +149,7 @@ Route::get('/post', function () {
     // return view('subpost', [
     //     'post_in_html'=> $post
     // ]);
-})->whereAlphaNumeric('post');
+// })->whereAlphaNumeric('post');
 
 Route::get('/', function () {
     return view('welcome');
