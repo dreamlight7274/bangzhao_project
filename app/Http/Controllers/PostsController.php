@@ -17,7 +17,8 @@ class PostsController extends Controller
         // }
         return view('post', [
             // 'posts_in_html' => $posts->get(),
-            'posts_in_html' => $this->GetPosts(),
+            // 'posts_in_html' => $this->GetPosts(),
+            'posts'=> Post::latest()->Filter()->get(),
             'categories_in_html' => Category::all()
     
         ]);
@@ -30,15 +31,16 @@ class PostsController extends Controller
         ]);
     }
 
-    protected function GetPosts(){
-        $posts = Post::latest();
-        if (request('search')){
-            $posts->where('title','like','%'. request('search'). '%')
-            ->orWhere('body', 'like', '%'.request('search').'%');
-        }
-        return $posts->get();
+    // protected function GetPosts(){
+    //     return Post::latest()->Filter()->get();
+    //     // $posts = Post::latest();
+    //     // if (request('search')){
+    //     //     $posts->where('title','like','%'. request('search'). '%')
+    //     //     ->orWhere('body', 'like', '%'.request('search').'%');
+    //     // }
+    //     // return $posts->get();
 
-    }
+    // }
 
 
 }
