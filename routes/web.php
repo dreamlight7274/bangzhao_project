@@ -86,11 +86,18 @@ Route::get('/post', function () {
     //     );
     // }
     // ddd($posts[0]->excerpt);
+        $posts = Post::latest();
+    if (request('search')){
+            $posts->where('title','like','%'. request('search'). '%')
+            ->orWhere('body', 'like', '%'.request('search').'%');
+        }
         return view('post', [
         // 'posts_in_html'=> Post::all()
         // how many posts you have, how many sqls you will 
         // 'posts_in_html'=> Post::with('category')->get()
-        'posts_in_html'=> Post::latest()->get(),  //->with('category','user'), we add it in model
+        'posts_in_html' => $posts->get(),
+        // 'posts_in_html'=> Post::latest()->get(),  
+        //->with('category','user'), we add it in model
         'categories_in_html' => Category::all()
 
     ]);

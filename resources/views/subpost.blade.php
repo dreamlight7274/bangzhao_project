@@ -48,8 +48,8 @@
                         {{ $post_in_html->title }}
                     </h1>
 
-                    <div class="space-y-4 lg:text-lg leading-loose">
-                        {{ $post_in_html->body }}
+                    <div class="space-y-4 lg:text-lg leading-loose space-y-4">
+                        {!! $post_in_html->body !!}
 
                     </div>
                 </div>
