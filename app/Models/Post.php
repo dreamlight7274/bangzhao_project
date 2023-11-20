@@ -16,10 +16,17 @@ class Post extends Model
 
     protected $with = ['category','user'];
 
-    public function scopeFilter($query){
-        if (request('search')){
-            $query->where('title','like','%'. request('search'). '%');
-            // ->orWhere('body', 'like', '%'.request('search').'%');
+    // public function scopeFilter($query){
+    //     if (request('search')){
+    //         $query->where('title','like','%'. request('search'). '%')
+    //          ->orWhere('body', 'like', '%'.request('search').'%');
+    //     }
+    // }
+
+    public function scopeFilter($query, array $filters){
+        if ($filters['search'] ?? false){
+            $query->where('title','like','%'. request('search'). '%')
+             ->orWhere('body', 'like', '%'.request('search').'%');
         }
     }
 

@@ -18,7 +18,8 @@ class PostsController extends Controller
         return view('post', [
             // 'posts_in_html' => $posts->get(),
             // 'posts_in_html' => $this->GetPosts(),
-            'posts'=> Post::latest()->Filter()->get(),
+            // 'posts'=> Post::latest()->Filter()->get(),
+            'posts'=> Post::latest()->Filter(request('search'))->get(),
             'categories_in_html' => Category::all()
     
         ]);
