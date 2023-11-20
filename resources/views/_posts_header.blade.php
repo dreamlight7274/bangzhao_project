@@ -23,7 +23,8 @@
                 <x-dropdown_item href="/post" :active="request()->routeIs('home')">All</x-dropdown_item>
                 {{-- <a href="/post" class="block text-left px-3 hover:bg-gray-300 focus:bg-gray-300">All</a> --}}
                 @foreach ($categories_in_html as $category)
-                <x-dropdown_item href="/categories/{{ $category->id }}"  
+                {{-- <x-dropdown_item href="/categories/{{ $category->id }}"   --}}
+                <x-dropdown_item href="/post/?category={{$category->id }}"  
                     {{-- :active="request()->is('categories/' . $category->id)" --}}
                     :active="isset($currentCategory) && $currentCategory->is($category)"
                     >{{ ucwords($category->name) }}</x-dropdown_item>

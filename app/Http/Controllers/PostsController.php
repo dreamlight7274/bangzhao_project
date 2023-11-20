@@ -19,8 +19,9 @@ class PostsController extends Controller
             // 'posts_in_html' => $posts->get(),
             // 'posts_in_html' => $this->GetPosts(),
             // 'posts'=> Post::latest()->Filter()->get(),
-            'posts'=> Post::latest()->Filter(request('search'))->get(),
-            'categories_in_html' => Category::all()
+            'posts_in_html'=> Post::latest()->Filter(request(['search','category']))->get(),
+            'categories_in_html' => Category::all(),
+            'currentCategory' => Category::where('id', request('category'))->first()
     
         ]);
     }
