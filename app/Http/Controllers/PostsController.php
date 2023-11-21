@@ -8,14 +8,14 @@ use App\Models\Category;
 
 class PostsController extends Controller
 {
-    public function index()
+    public function index_with_rule()
     {
         // $posts = Post::latest();
         // if (request('search')){
         //     $posts->where('title','like','%'. request('search'). '%')
         //     ->orWhere('body', 'like', '%'.request('search').'%');
         // }
-        return view('post', [
+        return view('posts.index_with_rule', [
             // 'posts_in_html' => $posts->get(),
             // 'posts_in_html' => $this->GetPosts(),
             // 'posts'=> Post::latest()->Filter()->get(),
@@ -26,9 +26,9 @@ class PostsController extends Controller
         ]);
     }
     
-    public function show(Post $post)
+    public function show_one(Post $post)
     {
-        return view('subpost',[
+        return view('posts.show_one',[
             'post_in_html' => $post
         ]);
     }

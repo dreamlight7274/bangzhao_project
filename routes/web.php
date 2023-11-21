@@ -108,8 +108,8 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 // })->name('home');
 
-Route::get('/post', [PostsController::class, 'index'])->name('home');
-Route::get('/post/{post}', [PostsController::class, 'show'])->whereAlphaNumeric('post');
+Route::get('/post', [PostsController::class, 'index_with_rule'])->name('home');
+Route::get('/post/{post}', [PostsController::class, 'show_one'])->whereAlphaNumeric('post');
 
 
 // if you want to use "Post $post" in function, the name in {} should be the same one."

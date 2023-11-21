@@ -1,5 +1,5 @@
 <x-layoutc>
-    @include('_posts_header')
+    @include('posts._posts_header')
 
     <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
         <x-post_card_grid :posts="$posts_in_html" />
