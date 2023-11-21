@@ -165,10 +165,12 @@ Route::get('/', function () {
 //     ]); // make the select more efficient
 // })->name('category');
 
-Route::get('authors/{user:username}', function (User $user) {
-    return view('post', [
-        'posts_in_html'=> $user->posts, //->load(['category','user'])
-        'categories' => Category::all()
-    ]);
-});
+
+// the route is the old one
+// Route::get('authors/{user:username}', function (User $user) {
+//     return view('posts.index_with_rule', [
+//         'posts_in_html'=> $user->posts, //->load(['category','user'])
+//         'categories' => Category::all()
+//     ]);
+// });
 

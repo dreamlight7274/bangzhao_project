@@ -24,9 +24,17 @@ class Post extends Model
     // }
 
     public function scopeFilter($query, array $filters){
-        $query->when($filters['search'] ?? false, function($query, $search) {
-            $query->where('title', 'like', '%'.$search. '%');
-        });
+        // $query->when($filters['search'] ?? false, function($query, $search) {
+        //     $query->where('title', 'like', '%'.$search. '%');
+        // });
+        $query->when($filters['search'] ?? false, fn($query, $search) => 
+        $query->where(fn($query) =>
+        $query->where('title', 'like', '%'.$search. '%')
+        )
+        
+        );
+
+
         // if ($filters['search'] ?? false){
         //     $query->where('title','like','%'. request('search'). '%');
         //     //  ->orWhere('body', 'like', '%'.request('search').'%');
@@ -35,7 +43,11 @@ class Post extends Model
             // $query->from('categories')->whereColumn('categories.id', 'posts.category_id') //add the column, or  it will use string
             //                           ->where('categories.slug', $category);
             $query->whereHas('category', fn($query)=> $query->where('id', $category));
+        });
 
+        $query->when($filters['author'] ?? false, function($query, $author) {
+
+            $query->whereHas('user', fn($query)=> $query->where('username', $author));
         });
     }
 
