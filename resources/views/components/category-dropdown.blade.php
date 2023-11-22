@@ -14,7 +14,10 @@
     @foreach ($categories_in_html as $category)
     {{-- <x-dropdown_item href="/categories/{{ $category->id }}"   --}}
     {{-- <x-dropdown_item href="/post/?category={{$category->id }}"   --}}
-        <x-dropdown_item href="/post/?category={{$category->id }}&{{ http_build_query(request()->except('category')) }}"
+        
+        <x-dropdown_item href="/post/?category={{$category->id }}&{{ http_build_query(request()
+        ->except('category', 'page')) }}"
+
         {{-- :active="request()->is('categories/' . $category->id)" --}}
         :active="isset($currentCategory) && $currentCategory->is($category)"
         >{{ ucwords($category->name) }}</x-dropdown_item>
