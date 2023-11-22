@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\RegisterController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -110,7 +111,7 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 Route::get('/post', [PostsController::class, 'index_with_rule'])->name('home');
 Route::get('/post/{post}', [PostsController::class, 'show_one'])->whereAlphaNumeric('post');
-// Route::get('register', );
+Route::get('/register', [RegisterController::class, 'create']);
 
 
 // if you want to use "Post $post" in function, the name in {} should be the same one."
