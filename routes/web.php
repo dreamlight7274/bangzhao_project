@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LogController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -111,8 +112,10 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 Route::get('/post', [PostsController::class, 'index_with_rule'])->name('home');
 Route::get('/post/{post}', [PostsController::class, 'show_one'])->whereAlphaNumeric('post');
-Route::get('/register', [RegisterController::class, 'create_account']);
-Route::post('/register', [RegisterController::class, 'store_to_db']);
+Route::get('/register', [RegisterController::class, 'create_account'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store_to_db'])->middleware('guest');
+Route::post('/logout', [LogController::class, 'clean_the_session']);
+Route::post('/login', [LogController::class, 'log_in'])->middleware('guest');
 
 
 // if you want to use "Post $post" in function, the name in {} should be the same one."
