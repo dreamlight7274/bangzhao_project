@@ -112,11 +112,14 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 Route::get('/post', [PostsController::class, 'index_with_rule'])->name('home');
 Route::get('/post/{post}', [PostsController::class, 'show_one'])->whereAlphaNumeric('post');
+
 Route::get('/register', [RegisterController::class, 'create_account'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store_to_db'])->middleware('guest');
-Route::post('/logout', [LogController::class, 'clean_the_session']);
-Route::post('/login', [LogController::class, 'log_in'])->middleware('guest');
 
+Route::get('/login', [LogController::class, 'log_in_account'])->middleware('guest');
+Route::post('/login', [LogController::class, 'save_account_in_session'])->middleware('guest');
+
+Route::post('/logout', [LogController::class, 'clean_the_session'])->middleware('auth');
 
 // if you want to use "Post $post" in function, the name in {} should be the same one."
 // Route::get('/post/{post}', function ($post_input) {

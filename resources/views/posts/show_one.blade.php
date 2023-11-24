@@ -57,6 +57,10 @@
 
                     </div>
                 </div>
+                <section class="col-span-12 mt-10">
+                    <x-comment />
+
+                </section>
             </article>
         </main>
 
