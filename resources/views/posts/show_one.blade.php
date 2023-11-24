@@ -58,7 +58,51 @@
                     </div>
                 </div>
                 <section class="col-span-12 mt-10">
-                    <x-comment />
+                    <form method="POST" action="#" class="py-6 rounded-xl border"> 
+
+                        <header class="flex items-center"> 
+
+                            <img src="https://i.pravatar.cc/40?u={{ auth()->id() }}" alt="pravatar" width="40" height="40"> 
+
+                            <h1 class="ml-3"> 
+
+                                 
+
+                                Hi 
+
+                            </h1> 
+
+                        </header> 
+
+                        <div> 
+
+                            <textarea name="body"  
+
+                            class="w-full border border-pink-500"  
+
+                            cols="30" rows="10"  
+
+                            placeholder="give your opinion"> 
+
+                        </textarea> 
+
+                        </div> 
+
+                        <div> 
+
+                            <button type="submit">Upload</button> 
+
+                        </div> 
+
+ 
+
+                    </form> 
+
+
+                    @foreach ($post_in_html->comments as $comment)
+                        <x-comment :comment="$comment" />
+                    @endforeach
+                    
 
                 </section>
             </article>

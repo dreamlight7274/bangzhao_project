@@ -1,17 +1,21 @@
+                    @props(['comment'])
+
                     {{-- col-start-3 --}}
                     <article class="flex bg-blue-100 px-2 py-2 border border-black rounded-xl space-x-3">
                         <div>
-                            <img src="https://i.pravatar.cc/50" alt="pravatar">
+                            <img src="https://i.pravatar.cc/50?u={{ $comment->id }}" alt="pravatar" width="50" height="50">
                         </div>
 
                         <div>
                             <header>
-                            <h3 class="font-bold text-lg">someone</h3>
-                            <p class="text-xs">Posted<time>the time set</time></p>
+                            <h3 class="font-bold text-lg">{{ $comment->user->username }}</h3>
+                            <p class="text-xs">Posted<time>{{ $comment->created_at }}</time></p>
                             </header>
 
                             <p class="mt-4">
-                            content of comment
+
+                            {{ $comment->body }}
+
 
                             </p>
                         </div>
