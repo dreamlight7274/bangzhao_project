@@ -1,7 +1,7 @@
 <x-layoutc>
     
     <section class="px-6 py-8">
-        <form method="POST" action="/admin/create">
+        <form method="POST" action="/admin/create" enctype="multipart/form-data">
             @csrf
 
         <div class="mb-6">
@@ -35,6 +35,19 @@
             @error('title')
                 <p class="text-red-500 text-xs">{{ $message }}</p>
             @enderror
+
+
+
+            <label class="block mb-2 uppercase font-bold text-xs" for="thumbnail">
+                Thumbnail
+            </label>
+            {{-- for connect id --}}
+            <input class="border border-blue-400 p-2 w-full" type="file" name="thumbnail" 
+            id="thumbnail" value="{{ old('thumbnail') }}" required>
+            @error('thumbnail')
+                <p class="text-red-500 text-xs">{{ $message }}</p>
+            @enderror
+
 
 
             <label class="block mb-2 uppercase font-bold text-xs" for="excerpt">

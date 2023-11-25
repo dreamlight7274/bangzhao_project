@@ -117,6 +117,7 @@ Route::get('/post/{post}', [PostsController::class, 'show_one'])->whereAlphaNume
 Route::get('/admin/post/create', [PostsController::class, 'create_a_post'])->middleware('user_log');
 Route::post('admin/create', [PostsController::class, 'post_store_to_db'])->middleware('user_log');
 
+
 Route::post('/post/{post}/comment', [CommentsController::class, 'store_to_db']);
 
 Route::get('/register', [RegisterController::class, 'create_account'])->middleware('guest');
