@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 use App\Models\Category;
+use Illuminate\Validation\Rule;
+use Symfony\Component\HttpFoundation\RateLimiter\RequestRateLimiterInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 class PostsController extends Controller
 {
@@ -37,6 +41,61 @@ class PostsController extends Controller
             'post_in_html' => $post
         ]);
     }
+
+    public function create_a_post(){
+
+        // if (auth()->guest()) {
+        //     abort(Response::HTTP_FORBIDDEN);
+        // }
+
+        // if (auth()->user()->username != 'dreamlight7274'){
+        //     abort(Response::HTTP_FORBIDDEN);
+        // }
+
+        return view('posts.create_post');
+    }
+
+    public function post_store_to_db(){
+
+        
+        $attributes = request()->validate([
+            'category_id' => ['required', Rule::exists('categories','id')],
+            'title' => 'required',
+            'excerpt' => 'required',
+            'body' => 'required'
+            
+        ]);
+
+        $attributes['user_id'] = auth()->id();
+
+        Post::create($attributes);
+        
+
+
+
+
+
+        
+
+        
+        
+
+        // Post::create([
+        //     'user_id'=> auth()->id(),
+        //     'category_id' => request('category_id'),
+        //     'title' => request('title'),
+        //     'excerpt' => request('excerpt'),
+        //     'body' => request('body')
+        // ]);
+        // Post::create([
+
+        //     'title' => $attributes['title']
+
+        // ]);
+        return redirect('/post');
+    }
+
+    
 
     // protected function GetPosts(){
     //     return Post::latest()->Filter()->get();
