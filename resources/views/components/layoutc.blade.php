@@ -36,12 +36,14 @@
                 <form method="POST" action="/logout">
                     @csrf
                     <button type="submit" class="bg-red-500 text-white rounded-xl px-2 py-1">Log out</button>
+                </form>
 
                 @else
                     <a href="/login" class="text-xs font-bold uppercase bg-green-500 text-white px-2 py-2 mx-1 hover:bg-green-700">Log in</a>
                     
                     <a href="/register" class="text-xs font-bold uppercase bg-blue-500 text-white px-2 py-2 mx-1 hover:bg-blue-700">Register</a>
                 @endauth
+
 
                 <a href="#" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                     Subscribe for Updates

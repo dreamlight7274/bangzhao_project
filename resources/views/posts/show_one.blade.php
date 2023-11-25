@@ -58,18 +58,17 @@
                     </div>
                 </div>
                 <section class="col-span-12 mt-10">
-                    <form method="POST" action="#" class="py-6 rounded-xl border"> 
+                    @auth
+
+                    <form method="POST" action="/post/{{ $post_in_html->id }}/comment" class="py-6 rounded-xl border"> 
+                        @csrf
 
                         <header class="flex items-center"> 
 
                             <img src="https://i.pravatar.cc/40?u={{ auth()->id() }}" alt="pravatar" width="40" height="40"> 
 
-                            <h1 class="ml-3"> 
-
-                                 
-
+                            <h1 class="ml-3">   
                                 Hi 
-
                             </h1> 
 
                         </header> 
@@ -82,21 +81,28 @@
 
                             cols="30" rows="10"  
 
-                            placeholder="give your opinion"> 
+                            placeholder="give your opinion"
+                            required> 
 
-                        </textarea> 
+                        </textarea>
+                        @error('body')
+                        <span class="text-xs text-red-500">{{ $message }}</span>
+
+                        @enderror 
 
                         </div> 
 
-                        <div> 
+                        <div class="flex justify-start"> 
 
-                            <button type="submit">Upload</button> 
+                            <button type="submit" 
+                            class="border border-black rounded-xl mx-2 px-6 py-1 font-bold bg-blue-500 text-white hover:bg-white hover:text-black">
+                            Upload
+                            </button> 
 
                         </div> 
-
- 
 
                     </form> 
+                    @endauth
 
 
                     @foreach ($post_in_html->comments as $comment)

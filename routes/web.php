@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LogController;
@@ -112,6 +113,7 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 Route::get('/post', [PostsController::class, 'index_with_rule'])->name('home');
 Route::get('/post/{post}', [PostsController::class, 'show_one'])->whereAlphaNumeric('post');
+Route::post('/post/{post}/comment', [CommentsController::class, 'store_to_db']);
 
 Route::get('/register', [RegisterController::class, 'create_account'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store_to_db'])->middleware('guest');
