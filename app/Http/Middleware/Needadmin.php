@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class Needlogin
+class Needadmin
 {
     /**
      * Handle an incoming request.
@@ -18,10 +18,9 @@ class Needlogin
         if (auth()->guest()) {
             abort(Response::HTTP_FORBIDDEN);
         }
-        // if (auth()->user()->username != 'dreamlight7274'){
-        //     abort(Response::HTTP_FORBIDDEN);
-        // }
-        
+        if (auth()->user()->username != 'dreamlight7274'){
+            abort(Response::HTTP_FORBIDDEN);
+        }
         return $next($request);
     }
 }
