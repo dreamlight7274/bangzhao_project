@@ -48,11 +48,13 @@
                 <a href="/admin/post/create" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                     Create a new post
                 </a>
+                @auth
                 @if (auth()->user()->username == 'dreamlight7274')
                 <a href="/admin/post/index" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                     Dashboard
                 </a>
                 @endif
+                @endauth
             </div>
         </nav>
         {{ $slot }}
