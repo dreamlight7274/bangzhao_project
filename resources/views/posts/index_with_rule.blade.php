@@ -15,6 +15,7 @@
         <x-post_card />
         </div> --}}
         {{ $posts_in_html->links() }}
+        {{-- the index --}}
     </main>
 
 </x-layoutc>

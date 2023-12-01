@@ -19,6 +19,7 @@ class PostsController extends Controller
         //     $posts->where('title','like','%'. request('search'). '%')
         //     ->orWhere('body', 'like', '%'.request('search').'%');
         // }
+        // return view('posts.index_with_rule', [
         return view('posts.pro_index_posts', [
             // 'posts_in_html' => $posts->get(),
             // 'posts_in_html' => $this->GetPosts(),

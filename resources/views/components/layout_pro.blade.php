@@ -9,7 +9,7 @@
     <section class="px-6 py-8 ">
 
         <nav class="bg-gray-100 w-full py-5">
-            <div class="justify-end">
+            <div>
                 <a href="/post">
                     <img src="/images/page_logo.svg" alt="Blog Logo" width="200" height="20">
                 </a>
@@ -19,7 +19,7 @@
 
     {{ $slot }} 
     
-        <footer class="bg-gray-100 w-full my-3 text-center items-center">
+        <footer class="bg-gray-100 w-full my-3 text-center">
             <div class="w-full">
             <h2>If you want to go back to  main page, please click the image below</h2>
             </div>
