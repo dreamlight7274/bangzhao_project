@@ -4,5 +4,6 @@
         <x-pro_posts_grid :posts="$posts_in_html"/>
 
 
+        {{ $posts_in_html->links() }}
     </main>
 </x-layout_pro>

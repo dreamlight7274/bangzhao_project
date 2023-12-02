@@ -27,7 +27,7 @@ class PostsController extends Controller
 
             // 'posts_in_html'=> Post::latest()->Filter(request(['search','category','author']))->get(),
             'posts_in_html'=> Post::latest()->Filter(request(['search','category','author']))
-            ->paginate(6)->withQueryString(),
+            ->paginate(4)->withQueryString(),
             
             
             'categories_in_html' => Category::all(),
