@@ -14,7 +14,8 @@ class Post extends Model
 
     // protected $fillable = ['title','excerpt','body'];
 
-    protected $with = ['category','user'];
+    // protected $with = ['category','user'];
+    protected $with = ['user'];
 
     // public function scopeFilter($query){
     //     if (request('search')){
@@ -39,11 +40,14 @@ class Post extends Model
         //     $query->where('title','like','%'. request('search'). '%');
         //     //  ->orWhere('body', 'like', '%'.request('search').'%');
         // }
-        $query->when($filters['category'] ?? false, function($query, $category) {
+        
             // $query->from('categories')->whereColumn('categories.id', 'posts.category_id') //add the column, or  it will use string
             //                           ->where('categories.slug', $category);
-            $query->whereHas('category', fn($query)=> $query->where('id', $category));
-        });
+
+
+        // $query->when($filters['category'] ?? false, function($query, $category) {    
+        //     $query->whereHas('category', fn($query)=> $query->where('id', $category));
+        // });
 
         $query->when($filters['author'] ?? false, function($query, $author) {
 
@@ -57,10 +61,10 @@ class Post extends Model
     }
     // this is another way to design the key for route to find the data
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
+    // public function category()
+    // {
+    //     return $this->belongsTo(Category::class);
+    // }
     public function user() 
     {
         return $this->belongsTo(User::class);

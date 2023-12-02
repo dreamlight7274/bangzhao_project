@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('portrait')->nullable(); //head portrat
+            $table->tinyInteger('level')->default(2); // 1 is admin, 2 is original user
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

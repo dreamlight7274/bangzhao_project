@@ -26,12 +26,12 @@ class PostsController extends Controller
             // 'posts'=> Post::latest()->Filter()->get(),
 
             // 'posts_in_html'=> Post::latest()->Filter(request(['search','category','author']))->get(),
-            'posts_in_html'=> Post::latest()->Filter(request(['search','category','author']))
+            'posts_in_html'=> Post::latest()->Filter(request(['search','author']))
             ->paginate(4)->withQueryString(),
             
             
-            'categories_in_html' => Category::all(),
-            'currentCategory' => Category::where('id', request('category'))->first()
+            // 'categories_in_html' => Category::all(),
+            // 'currentCategory' => Category::where('id', request('category'))->first()
     
         ]);
     }
