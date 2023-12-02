@@ -38,7 +38,7 @@ class PostsController extends Controller
     
     public function show_one(Post $post)
     {
-        return view('posts.show_one',[
+        return view('posts.pro_show_one',[
             'post_in_html' => $post
         ]);
     }
