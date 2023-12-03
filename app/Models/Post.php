@@ -30,7 +30,8 @@ class Post extends Model
         // });
         $query->when($filters['search'] ?? false, fn($query, $search) => 
         $query->where(fn($query) =>
-        $query->where('title', 'like', '%'.$search. '%')
+        $query->where('title', 'like', '%'.$search. '%')->orWherehas('user', fn($query)=> $query->where('username', 'like', '%'.request('search').'%'))
+        // ('user', 'like', '%'.request('search').'%')
         )
         
         );
