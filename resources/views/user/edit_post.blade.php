@@ -1,7 +1,7 @@
 <x-layout_pro>
     
     <section class="px-6 py-8">
-        <form method="POST" action="/admin/update/{{ $post_in_html->id }}" enctype="multipart/form-data">
+        <form method="POST" action="/user/update/{{ $post_in_html->id }}" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
 

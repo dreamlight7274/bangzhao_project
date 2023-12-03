@@ -20,15 +20,20 @@ class PostEditcontroller extends Controller
         ['post_in_html' => $post]
         
     );
+    }
 
-
+    public function user_edit_the_post(Post $post){
+        return view('user.edit_post',
+        ['post_in_html' => $post]
+        
+    );
     }
 
     public function update_the_post(Post $post){
         $attributes = request()->validate([
             // if something is no need to change use Rule::unique('table','slug')->ignore($entity->attribute)
 
-            'category_id' => ['required', Rule::exists('categories','id')],
+            // 'category_id' => ['required', Rule::exists('categories','id')],
             'title' => 'required',
             'thumbnail' => 'image',
             'excerpt' => 'required',
@@ -48,9 +53,39 @@ class PostEditcontroller extends Controller
 
     }
 
+    public function user_update_the_post(Post $post){
+        $attributes = request()->validate([
+            // if something is no need to change use Rule::unique('table','slug')->ignore($entity->attribute)
+
+            // 'category_id' => ['required', Rule::exists('categories','id')],
+            'title' => 'required',
+            'thumbnail' => 'image',
+            'excerpt' => 'required',
+            'body' => 'required'
+            
+        ]);
+
+        if(isset($attributes['thumbnail'])){
+            $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+        }
+        
+
+
+        $post->update($attributes);
+        return redirect('/post/'. $post->id)->with('success','update successfully');
+
+
+    }
+
     public function delete_the_post(Post $post){
         $post->delete();
         return back()->with('success','post delete');
+
+    }
+
+    public function user_delete_the_post(Post $post){
+        $post->delete();
+        return redirect('/post')->with('success','post delete');
 
     }
     

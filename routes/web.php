@@ -115,8 +115,12 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 Route::get('/post', [PostsController::class, 'index_with_rule'])->name('home');
 Route::get('/post/{post}', [PostsController::class, 'show_one'])->whereAlphaNumeric('post');
 
-Route::get('/admin/post/create', [PostsController::class, 'create_a_post'])->middleware('user_log');
-Route::post('/admin/create', [PostsController::class, 'post_store_to_db'])->middleware('user_log');
+Route::get('/user/post/create', [PostsController::class, 'create_a_post'])->middleware('user_log');
+Route::post('/user/create', [PostsController::class, 'post_store_to_db'])->middleware('user_log');
+Route::get('/user/action/{post}/edit', [PostEditcontroller::class, 'user_edit_the_post'])->middleware('user_creator');
+Route::patch('/user/update/{post}', [PostEditcontroller::class, 'user_update_the_post'])->middleware('user_creator');
+Route::delete('/user/delete/{post}', [PostEditcontroller::class, 'user_delete_the_post'])->middleware('user_creator');
+
 Route::get('/admin/post/index', [PostEditcontroller::class, 'index_the_posts'])->middleware('user_admin');
 Route::get('/admin/action/{post}/edit', [PostEditcontroller::class, 'edit_the_post'])->middleware('user_admin');
 Route::patch('/admin/update/{post}', [PostEditcontroller::class, 'update_the_post'])->middleware('user_admin');

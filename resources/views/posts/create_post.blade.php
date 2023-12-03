@@ -1,7 +1,7 @@
-<x-layoutc>
+<x-layout_pro>
     
     <section class="px-6 py-8">
-        <form method="POST" action="/admin/create" enctype="multipart/form-data">
+        <form method="POST" action="/user/create" enctype="multipart/form-data">
             @csrf
 
         <div class="mb-6">
@@ -43,7 +43,7 @@
             </label>
             {{-- for connect id --}}
             <input class="border border-blue-400 p-2 w-full" type="file" name="thumbnail" 
-            id="thumbnail" value="{{ old('thumbnail') }}" required>
+            id="thumbnail" value="{{ old('thumbnail') }}">
             @error('thumbnail')
                 <p class="text-red-500 text-xs">{{ $message }}</p>
             @enderror
@@ -80,4 +80,4 @@
             </div> 
     </section>
 
-</x-layoutc >
+</x-layout_pro >

@@ -64,14 +64,17 @@ class PostsController extends Controller
         $attributes = request()->validate([
             // 'category_id' => ['required', Rule::exists('categories','id')],
             'title' => 'required',
-            'thumbnail' => 'required|image',
+            'thumbnail' => 'image',
             'excerpt' => 'required',
             'body' => 'required'
             
         ]);
 
         $attributes['user_id'] = auth()->id();
+        if(isset($attributes['thumbnail'])){
         $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+        }
+
 
         Post::create($attributes);
         

@@ -43,7 +43,7 @@
                 </label>
                 {{-- for connect id --}}
                 <input class="border border-blue-400 p-2 w-full" type="file" name="portrait" 
-                id="portrait" value="{{ old('portrait') }}" required>
+                id="portrait" value="{{ old('portrait') }}">
                 @error('portrait')
                     <p class="text-red-500 text-xs">{{ $message }}</p>
                 @enderror

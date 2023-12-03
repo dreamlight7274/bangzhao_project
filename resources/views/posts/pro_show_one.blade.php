@@ -1,4 +1,5 @@
 <x-layout_pro>
+    @include('posts._post_header_pro')
     <section class="px-6 py-8">
         <main class="max-w-6xl mx-auto my-20">
             <article class="mx-auto grid grid-cols-12 ">
@@ -65,8 +66,8 @@
                             <header class="flex items-center"> 
     
                                 {{-- <img src="https://i.pravatar.cc/40?u={{ auth()->id() }}" alt="pravatar" width="40" height="40">  --}}
-                                @if ($post_in_html->user->portrait)
-                                <img src="{{ asset('storage/' . $post_in_html->user->portrait) }}" alt="portrait" width="40" height="40" class="rounded-xl">
+                                @if (auth()->user()->portrait)
+                                <img src="{{ asset('storage/' . auth()->user()->portrait) }}" alt="portrait" width="40" height="40" class="rounded-xl">
                                 @else
                                 <img src="/images/default_portrait.png" alt="protrait" width="40" height="40" class="rounded-xl">
                                 @endif
