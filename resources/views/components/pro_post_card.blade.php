@@ -35,7 +35,11 @@
     </div>
     <div class="flex flex-1 hover:bg-yellow-100">
         <div>
+            @if ($post->user->portrait)
+            <img src="{{ asset('storage/' . $post->user->portrait) }}" width="100" height="100" class="rounded-xl" alt="portrait">
+            @else
             <img src="/images/default_portrait.png" width="100" height="100" class="rounded-xl" alt="portrait">
+            @endif
         </div>
         <div class="flex flex-col justify-center">
             

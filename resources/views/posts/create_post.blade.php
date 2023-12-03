@@ -5,11 +5,11 @@
             @csrf
 
         <div class="mb-6">
-
-            <label class="block mb-2 uppercase font-bold text-xs" for="category_id">
+{{-- for connect id --}}
+            {{-- <label class="block mb-2 uppercase font-bold text-xs" for="category_id">
                 Category
             </label>
-            {{-- for connect id --}}
+            
             <select name="category_id" id="category_id">
                 @php
                 $categories = \App\Models\Category::all();
@@ -23,7 +23,7 @@
             </select>
             @error('category_id')
                 <p class="text-red-500 text-xs">{{ $message }}</p>
-            @enderror
+            @enderror --}}
 
 
             <label class="block mb-2 uppercase font-bold text-xs" for="title">

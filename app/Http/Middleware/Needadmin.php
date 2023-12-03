@@ -18,7 +18,7 @@ class Needadmin
         if (auth()->guest()) {
             abort(Response::HTTP_FORBIDDEN);
         }
-        if (auth()->user()->username != 'dreamlight7274'){
+        if (auth()->user()->level != '1'){
             abort(Response::HTTP_FORBIDDEN);
         }
         return $next($request);

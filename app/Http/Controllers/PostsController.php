@@ -62,7 +62,7 @@ class PostsController extends Controller
 
         
         $attributes = request()->validate([
-            'category_id' => ['required', Rule::exists('categories','id')],
+            // 'category_id' => ['required', Rule::exists('categories','id')],
             'title' => 'required',
             'thumbnail' => 'required|image',
             'excerpt' => 'required',

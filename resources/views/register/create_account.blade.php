@@ -1,10 +1,10 @@
-<x-layoutc>
+<x-layout_pro>
     <section class="px-6 py-8">
         <main class="max-w-lg mx-auto p-6  bg-pink-100 rounded-xl">
             <h1 class="text-center font-bold text-xl text-red-400"> 
                 Register here
             </h1>
-            <form method="POST" action="/register" class="mt-10">
+            <form method="POST" action="/register" class="mt-10" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-6">
@@ -35,6 +35,16 @@
                     <input class="border border-blue-400 p-2 w-full" type="email" name="email" 
                     id="email" value="{{ old('email') }}" required>
                     @error('email')
+                    <p class="text-red-500 text-xs">{{ $message }}</p>
+                @enderror
+
+                <label class="block mb-2 uppercase font-bold text-xs" for="portrait">
+                    Portrait
+                </label>
+                {{-- for connect id --}}
+                <input class="border border-blue-400 p-2 w-full" type="file" name="portrait" 
+                id="portrait" value="{{ old('portrait') }}" required>
+                @error('portrait')
                     <p class="text-red-500 text-xs">{{ $message }}</p>
                 @enderror
 
@@ -73,4 +83,4 @@
     </section>
 
 
-</x-layoutc>
+</x-layout_pro>

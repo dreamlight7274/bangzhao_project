@@ -16,9 +16,13 @@ class RegisterController extends Controller
             'name'=> 'required|max:100',
             'username'=> 'required|max:100|unique:users,username',
             'email' => 'required|email|unique:users,email',
+            'portrait' => 'image',
             'password'=> 'required|min:10'
             // 'password'=> ['required','min:10','max:100']
         ]);
+        if(isset($attributes['portrait'])){
+            $attributes['portrait'] = request()->file('portrait')->store('portraits');
+        }
         $user = User::create($attributes); 
 
         session()->flash('success','Hi, You have created your account successfully');

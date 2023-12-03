@@ -1,4 +1,4 @@
-<x-layoutc>
+<x-layout_pro>
     
     <section class="px-6 py-8">
         <form method="POST" action="/admin/update/{{ $post_in_html->id }}" enctype="multipart/form-data">
@@ -82,4 +82,4 @@
             </div> 
     </section>
 
-</x-layoutc >
+</x-layout_pro >

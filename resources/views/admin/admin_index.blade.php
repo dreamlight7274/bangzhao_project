@@ -1,4 +1,4 @@
-<x-layoutc>
+<x-layout_pro>
     
     <section class="px-6 py-8">
         <table class="border border-black w-full divide-y divide-x divide-black table-fixed rounded-xl">
@@ -43,4 +43,4 @@
         </table>
     </section>
 
-</x-layoutc >
+</x-layout_pro >

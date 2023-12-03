@@ -1,4 +1,4 @@
-<x-layoutc>
+<x-layout_pro>
     <section class="px-6 py-8">
         <main class="max-w-lg mx-auto p-6  bg-pink-100 rounded-xl">
             <h1 class="text-center font-bold text-xl text-red-400"> 
@@ -62,4 +62,4 @@
     </section>
 
 
-</x-layoutc>
+</x-layout_pro>
