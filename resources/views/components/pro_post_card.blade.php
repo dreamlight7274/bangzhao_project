@@ -9,7 +9,9 @@
         <img src="/images/default_post.jpg" alt="Blog Post illustration" class="rounded-xl">
         @endif
         </div>
-
+        {{-- flex-grow:1(items can grow to fill the container)
+        flex-shrink:1 (items can shrink to adapt the container)
+        Flex-basis:0 (the default size of items is 0) --}}
 
         <div class="flex-1">
             <header>    
