@@ -20,11 +20,18 @@
                     @enderror --}}
 
 
-                    <label class="block mb-2 uppercase font-bold text-xs" for="email">
+                    {{-- <label class="block mb-2 uppercase font-bold text-xs" for="email">
                         Email
                     </label>
                     <input class="border border-blue-400 p-2 w-full" type="email" name="email" 
-                    id="email" value="{{ old('email') }}" required>
+                    id="email" value="{{ old('email') }}" required> --}}
+
+                    <label class="block mb-2 uppercase font-bold text-xs" for="username">
+                        Username
+                    </label>
+                    <input class="border border-blue-400 p-2 w-full" type="text" name="username" 
+                    id="username" value="{{ old('username') }}" required>
+                    
                     
 
 

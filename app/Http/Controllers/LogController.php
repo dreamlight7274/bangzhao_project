@@ -19,13 +19,14 @@ class LogController extends Controller
     public function save_account_in_session(){
         // add the message to session, oh, check first
         $attributes = request()->validate([
-            'email' => 'required|email', // exists, but it will tell people someone have registered.
+            'username' => 'required',
+            // 'email' => 'required|email', // exists, but it will tell people someone have registered.
             'password' => 'required'
 
         ]);
         if (! auth()->attempt($attributes)){
             throw ValidationException::withMessages([
-                'something_wrong'=> 'There is something wrong with your email or password.'
+                'something_wrong'=> 'There is something wrong with your username or password.'
                 
             ]);
             

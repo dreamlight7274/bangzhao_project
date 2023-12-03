@@ -55,6 +55,70 @@
                         </div>
 
                     </section>
+                    {{-- comments --}}
+                    <section class="col-span-12 mt-10">
+                        @auth
+    
+                        <form method="POST" action="/post/{{ $post_in_html->id }}/comment" class="py-6 rounded-xl border"> 
+                            @csrf
+    
+                            <header class="flex items-center"> 
+    
+                                {{-- <img src="https://i.pravatar.cc/40?u={{ auth()->id() }}" alt="pravatar" width="40" height="40">  --}}
+                                @if ($post_in_html->user->portrait)
+                                <img src="{{ asset('storage/' . $post_in_html->user->portrait) }}" alt="portrait" width="40" height="40" class="rounded-xl">
+                                @else
+                                <img src="/images/default_portrait.png" alt="protrait" width="40" height="40" class="rounded-xl">
+                                @endif
+    
+                                <h1 class="ml-3">   
+                                    Hi 
+                                </h1> 
+    
+                            </header> 
+    
+                            <div> 
+    
+                                <textarea name="body"  
+    
+                                class="w-full border border-pink-500"  
+    
+                                cols="30" rows="10"  
+    
+                                placeholder="give your opinion"
+                                required> 
+    
+                            </textarea>
+                            @error('body')
+                            <span class="text-xs text-red-500">{{ $message }}</span>
+    
+                            @enderror 
+    
+                            </div> 
+    
+                            <div class="flex justify-start"> 
+    
+                                <button type="submit" 
+                                class="border border-black rounded-xl mx-2 px-6 py-1 font-bold bg-blue-500 text-white hover:bg-white hover:text-black">
+                                Upload
+                                </button> 
+    
+                            </div> 
+    
+                        </form> 
+                        @endauth
+    
+    
+                        @foreach ($post_in_html->comments as $comment)
+                            <x-comment :comment="$comment" />
+                        @endforeach
+                        
+    
+                    </section>
+                </article>
+            </main>
+    
+        </section>
 
                 
 
