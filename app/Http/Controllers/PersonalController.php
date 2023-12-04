@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PersonalController extends Controller
 {
@@ -65,5 +66,35 @@ class PersonalController extends Controller
         
 
     }
+    public function modify_password(User $user){
+        return view('user.modify_password',
+
+        
+        ['user_in_html' => $user]
+    );
+
+    }
+
+    public function password_update(User $user){
+        $attributes = request()->validate([
+            // if something is no need to change use Rule::unique('table','slug')->ignore($entity->attribute)
+
+            // 'category_id' => ['required', Rule::exists('categories','id')],
+            'password' => 'required|min:10',
+            'password_confirm' => 'required|same:password'
+            
+        ]);
+        $user->update(['password'=> Hash::make($attributes['password'])]);
+        // update
+
+
+        return redirect('/user/personal/'. $user->id)->with('success','update password successfully');
+        
+
+
+
+
+    }
+
 
 }

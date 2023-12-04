@@ -126,6 +126,8 @@ Route::get('/user/personal/{user}', [PersonalController::class, 'personal_page']
 Route::get('/user/personalbasic/{user}', [PersonalController::class, 'edit_basic_info'])->middleware('user_owner');
 Route::patch('/user/basicinfo/update/{user}', [PersonalController::class, 'update_basic_info'])->middleware('user_owner');
 Route::delete('/user/account/delete/{user}', [PersonalController::class, 'user_delete_the_account'])->middleware('user_owner');
+Route::get('/user/password/{user}', [PersonalController::class, 'modify_password'])->middleware('user_owner');
+Route::patch('/user/password/update/{user}', [PersonalController::class, 'password_update'])->middleware('user_owner');
 
 Route::get('/admin/post/index', [PostEditcontroller::class, 'index_the_posts'])->middleware('user_admin');
 Route::get('/admin/action/{post}/edit', [PostEditcontroller::class, 'edit_the_post'])->middleware('user_admin');

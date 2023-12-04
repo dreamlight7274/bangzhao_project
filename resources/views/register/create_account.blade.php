@@ -50,13 +50,13 @@
 
 
 
-                    <label class="block mb-2 uppercase font-bold text-xs" for="password">
-                        Password
-                    </label>
-                    <input class="border border-blue-400 p-2 w-full" type="password" name="password" 
-                    id="password" required>
-                    @error('password')
-                    <p class="text-red-500 text-xs">{{ $message }}</p>
+                <label class="block mb-2 uppercase font-bold text-xs" for="password">
+                    Password
+                </label>
+                <input class="border border-blue-400 p-2 w-full" type="password" name="password" 
+                id="password" required>
+                @error('password')
+                <p class="text-red-500 text-xs">{{ $message }}</p>
                 @enderror
 
                     
