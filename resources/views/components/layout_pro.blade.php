@@ -22,7 +22,7 @@
                 <a href="/register" class="text-xs font-bold uppercase">Register</a>
                 @endif --}}
                 @auth
-                <span class="text-xs font-bold px-2 my-2">Welcome! {{ auth()->user()->username }}</span>
+                <span class="text-xs font-bold px-2 my-2">Welcome! <a href="/user/personal/{{ auth()->user()->id }}" class="hover:text-blue-500">{{ auth()->user()->username }}</a></span>
                 <form method="POST" action="/logout">
                     @csrf
                     <button type="submit" class="bg-red-500 text-white rounded-xl px-2 py-1 mt-1">Log out</button>

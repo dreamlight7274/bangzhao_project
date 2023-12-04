@@ -4,6 +4,7 @@ use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LogController;
+use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\PostEditcontroller;
 use App\Models\Category;
 use App\Models\Post;
@@ -120,6 +121,7 @@ Route::post('/user/create', [PostsController::class, 'post_store_to_db'])->middl
 Route::get('/user/action/{post}/edit', [PostEditcontroller::class, 'user_edit_the_post'])->middleware('user_creator');
 Route::patch('/user/update/{post}', [PostEditcontroller::class, 'user_update_the_post'])->middleware('user_creator');
 Route::delete('/user/delete/{post}', [PostEditcontroller::class, 'user_delete_the_post'])->middleware('user_creator');
+Route::get('/user/personal/{user}', [PersonalController::class, 'personal_page'])->middleware('user_log');
 
 Route::get('/admin/post/index', [PostEditcontroller::class, 'index_the_posts'])->middleware('user_admin');
 Route::get('/admin/action/{post}/edit', [PostEditcontroller::class, 'edit_the_post'])->middleware('user_admin');
