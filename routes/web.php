@@ -132,7 +132,7 @@ Route::patch('/user/password/update/{user}', [PersonalController::class, 'passwo
 
 Route::get('/admin/post/index', [PostEditcontroller::class, 'index_the_posts'])->middleware('user_admin');
 // Route::get('/admin/action/{post}/edit', [PostEditcontroller::class, 'edit_the_post'])->middleware('user_admin');
-Route::patch('/admin/update/{post}', [PostEditcontroller::class, 'update_the_post'])->middleware('user_admin');
+// Route::patch('/admin/update/{post}', [PostEditcontroller::class, 'update_the_post'])->middleware('user_admin');
 Route::delete('/admin/delete/{post}', [PostEditcontroller::class, 'delete_the_post'])->middleware('user_admin');
 Route::get('/admin/comment/index', [CommentsController::class, 'index_the_comments'])->middleware('user_admin');
 Route::delete('/admin/comment/delete/{comment}', [Commentscontroller::class, 'delete_the_comment'])->middleware('user_admin');
