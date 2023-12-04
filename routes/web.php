@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\PostEditcontroller;
+use App\Http\Controllers\UsersController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -130,9 +131,15 @@ Route::get('/user/password/{user}', [PersonalController::class, 'modify_password
 Route::patch('/user/password/update/{user}', [PersonalController::class, 'password_update'])->middleware('user_owner');
 
 Route::get('/admin/post/index', [PostEditcontroller::class, 'index_the_posts'])->middleware('user_admin');
-Route::get('/admin/action/{post}/edit', [PostEditcontroller::class, 'edit_the_post'])->middleware('user_admin');
+// Route::get('/admin/action/{post}/edit', [PostEditcontroller::class, 'edit_the_post'])->middleware('user_admin');
 Route::patch('/admin/update/{post}', [PostEditcontroller::class, 'update_the_post'])->middleware('user_admin');
 Route::delete('/admin/delete/{post}', [PostEditcontroller::class, 'delete_the_post'])->middleware('user_admin');
+Route::get('/admin/comment/index', [CommentsController::class, 'index_the_comments'])->middleware('user_admin');
+Route::delete('/admin/comment/delete/{comment}', [Commentscontroller::class, 'delete_the_comment'])->middleware('user_admin');
+Route::get('/admin/user/index', [UsersController::class, 'index_the_users'])->middleware('user_admin');
+Route::delete('/admin/user/delete/{user}', [UsersController::class, 'delete_the_user'])->middleware('user_admin');
+Route::get('/admin/user/{user}/edit', [UsersController::class, 'edit_the_user'])->middleware('user_admin');
+Route::patch('/admin/user/update/{user}', [UsersController::class, 'change_the_level'])->middleware('user_admin');
 
 Route::post('/post/{post}/comment', [CommentsController::class, 'store_to_db']);
 

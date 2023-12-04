@@ -9,7 +9,7 @@ use Illuminate\Validation\Rule;
 class PostEditcontroller extends Controller
 {
     public function index_the_posts(){
-        return view('admin.admin_index', [
+        return view('admin.admin_posts', [
             'posts_in_html' => Post::paginate(50)
 
         ]);

@@ -1,5 +1,5 @@
 <x-layout_pro>
-    
+    @include('admin._admin_header')
     <section class="px-6 py-8">
         <table class="border border-black w-full divide-y divide-x divide-black table-fixed rounded-xl">
             <thead>
@@ -19,13 +19,13 @@
                         <a href="/post/{{ $post->id }}">
                         {{ $post->title }}
                     </td>
-                    <td class="border border-black">{{ $post->user->name }}</td>
+                    <td class="border border-black">{{ $post->user->username }}</td>
                     <td class="border border-black">{{ $post->excerpt }}</td>
                     <td class="border border-black text-center">
-                        <div>
+                        {{-- <div>
                         
                         <a href="/admin/action/{{ $post->id }}/edit" class="bg-blue-300">Edit</a>
-                        </div>
+                        </div> --}}
                             <div>
                         <form method="POST" action="/admin/delete/{{ $post->id }}">
                             @csrf

@@ -7,9 +7,9 @@
 
         <div class="mb-6">
 
-            <label class="block mb-2 uppercase font-bold text-xs" for="category_id">
+            {{-- <label class="block mb-2 uppercase font-bold text-xs" for="category_id">
                 Category
-            </label>
+            </label> --}}
             {{-- for connect id --}}
             {{-- <select name="category_id" id="category_id" >
                 @php
