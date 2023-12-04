@@ -5,6 +5,7 @@ namespace App\Http;
 use App\Http\Middleware\Needadmin;
 use App\Http\Middleware\Needcreator;
 use App\Http\Middleware\Needlogin;
+use App\Http\Middleware\Needowner;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -57,9 +58,10 @@ class Kernel extends HttpKernel
      */
     protected $middlewareAliases = [
         'auth' => \App\Http\Middleware\Authenticate::class,
-        'user_log' => Needlogin::class,  //new one
+        'user_log' => Needlogin::class,  // new one
         'user_admin' => Needadmin::class, // new two
-        'user_creator' => Needcreator::class, //new three
+        'user_creator' => Needcreator::class, // new three
+        'user_owner' => Needowner::class, // new four
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

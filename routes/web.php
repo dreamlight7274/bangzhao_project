@@ -121,7 +121,11 @@ Route::post('/user/create', [PostsController::class, 'post_store_to_db'])->middl
 Route::get('/user/action/{post}/edit', [PostEditcontroller::class, 'user_edit_the_post'])->middleware('user_creator');
 Route::patch('/user/update/{post}', [PostEditcontroller::class, 'user_update_the_post'])->middleware('user_creator');
 Route::delete('/user/delete/{post}', [PostEditcontroller::class, 'user_delete_the_post'])->middleware('user_creator');
-Route::get('/user/personal/{user}', [PersonalController::class, 'personal_page'])->middleware('user_log');
+
+Route::get('/user/personal/{user}', [PersonalController::class, 'personal_page'])->middleware('user_owner');
+Route::get('/user/personalbasic/{user}', [PersonalController::class, 'edit_basic_info'])->middleware('user_owner');
+Route::patch('/user/basicinfo/update/{user}', [PersonalController::class, 'update_basic_info'])->middleware('user_owner');
+Route::delete('/user/account/delete/{user}', [PersonalController::class, 'user_delete_the_account'])->middleware('user_owner');
 
 Route::get('/admin/post/index', [PostEditcontroller::class, 'index_the_posts'])->middleware('user_admin');
 Route::get('/admin/action/{post}/edit', [PostEditcontroller::class, 'edit_the_post'])->middleware('user_admin');

@@ -1,4 +1,5 @@
 <x-layout_pro>
+    @include('user._personal_header')
     <section class="px-6 py-8">
         <main class="max-w-6xl mx-auto my-20 grid grid-cols-12">
             
@@ -10,6 +11,7 @@
                     @endif
                 </div>
                 <div class="col-span-9 bg-gray-200">
+                    <p><span class="font-bold text-2xl">Name: </span><span class="text-2xl">{{ $user_in_html->name }}</span></p>
                     <p><span class="font-bold text-2xl">Username: </span><span class="text-2xl">{{ $user_in_html->username }}</span></p>
                     <p><span class="font-bold text-2xl">Email: </span><span class="text-2xl">{{ $user_in_html->email }}</span></p>
 

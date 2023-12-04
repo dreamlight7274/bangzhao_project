@@ -1,12 +1,13 @@
 <x-layout_pro>
+    @include('user._personal_header')
     
     <section class="px-6 py-8">
-        <form method="POST" action="/user/update/{{ $post_in_html->id }}" enctype="multipart/form-data">
+        <form method="POST" action="/user/basicinfo/update/{{ $user_in_html->id }}" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
 
         <div class="mb-6">
-
+        <h1 class="font-blod">Edit basic info<h1>
             {{-- <label class="block mb-2 uppercase font-bold text-xs" for="category_id">
                 Category
             </label> --}}
@@ -27,48 +28,45 @@
             @enderror --}}
 
 
-            <label class="block mb-2 uppercase font-bold text-xs" for="title">
-                Title
+            <label class="block mb-2 uppercase font-bold text-xs" for="name">
+                Name
             </label>
             {{-- for connect id --}}
-            <input class="border border-blue-400 p-2 w-full" type="text" name="title" 
-            id="title" value="{{ old('title', $post_in_html->title) }}" required>
-            @error('title')
+            <input class="border border-blue-400 p-2 w-full" type="text" name="name" 
+            id="name" value="{{ old('name', $user_in_html->name) }}" required>
+            @error('name')
                 <p class="text-red-500 text-xs">{{ $message }}</p>
+            @enderror
+
+            <label class="block mb-2 uppercase font-bold text-xs" for="username">
+                Username
+            </label>
+            {{-- for connect id --}}
+            <input class="border border-blue-400 p-2 w-full" type="text" name="username" 
+            id="username" value="{{ old('username', $user_in_html->username) }}" required>
+            @error('username')
+                <p class="text-red-500 text-xs">{{ $message }}</p>
+            @enderror
+
+            <label class="block mb-2 uppercase font-bold text-xs" for="email">
+                Email
+            </label>
+            <input class="border border-blue-400 p-2 w-full" type="email" name="email" 
+            id="email" value="{{ old('email', $user_in_html->email) }}" required>
+            @error('email')
+            <p class="text-red-500 text-xs">{{ $message }}</p>
             @enderror
 
 
 
-            <label class="block mb-2 uppercase font-bold text-xs" for="thumbnail">
-                Thumbnail
+            <label class="block mb-2 uppercase font-bold text-xs" for="portrait">
+                Portrait
             </label>
             {{-- for connect id --}}
-            <input class="border border-blue-400 p-2 w-full" type="file" name="thumbnail" 
-            id="thumbnail" value="{{ old('thumbnail', $post_in_html->thumbnail) }}">
+            <input class="border border-blue-400 p-2 w-full" type="file" name="portrait" 
+            id="portrait" value="{{ old('portrait', $user_in_html->portrait) }}">
             {{-- <img src="{{ asset('storage/' . $post_in_html->thumbnail) }}" alt="" class="rounded-xl"> --}}
-            @error('thumbnail')
-                <p class="text-red-500 text-xs">{{ $message }}</p>
-            @enderror
-
-
-
-            <label class="block mb-2 uppercase font-bold text-xs" for="excerpt">
-                Excerpt
-            </label>
-            {{-- for connect id --}}
-            <textarea class="border border-blue-400 p-2 w-full" type="text" name="excerpt" 
-            id="excerpt" rows="2" required>{{ old('excerpt', $post_in_html->excerpt) }}</textarea>
-            @error('excerpt')
-                <p class="text-red-500 text-xs">{{ $message }}</p>
-            @enderror
-
-            <label class="block mb-2 uppercase font-bold text-xs" for="body">
-                Body
-            </label>
-            {{-- for connect id --}}
-            <textarea class="border border-blue-400 p-2 w-full" type="text" name="body" 
-            id="body" rows="10" required>{{ old('body', $post_in_html->body) }}</textarea>
-            @error('body')
+            @error('portrait')
                 <p class="text-red-500 text-xs">{{ $message }}</p>
             @enderror
 
