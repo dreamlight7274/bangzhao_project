@@ -141,7 +141,7 @@ Route::delete('/admin/user/delete/{user}', [UsersController::class, 'delete_the_
 Route::get('/admin/user/{user}/edit', [UsersController::class, 'edit_the_user'])->middleware('user_admin');
 Route::patch('/admin/user/update/{user}', [UsersController::class, 'change_the_level'])->middleware('user_admin');
 
-Route::post('/post/{post}/comment', [CommentsController::class, 'store_to_db']);
+Route::post('/post/{post}/comment', [CommentsController::class, 'store_to_db'])->middleware('user_log');
 
 Route::get('/register', [RegisterController::class, 'create_account'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store_to_db'])->middleware('guest');
